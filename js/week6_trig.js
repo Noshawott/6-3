@@ -46,6 +46,7 @@ function animate()
 	//w and s move forward and backward
 	//a and d rotate the triangle
 	angularMovement();
+	lookAtPlayer();
 	
 	//-------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------INSTRUCTIONS-------------------------------------------------------
@@ -128,3 +129,11 @@ function angularMovement()
 	player.move();
 }
 
+function lookAtPlayer()
+{
+    var dx = player.x - turret.x;
+    var dy = player.y - turret.y;
+
+    var radians = Math.atan2(dy,dx);
+    turret.angle = radians * 180/Math.PI;
+}
